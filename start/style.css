@@ -8,20 +8,20 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-}
-
 
 /* Body: tipografia di base */
 body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.7;
+
   color: #2b2b2b;
   background-color: #fafafa;
+  margin: 0;
+  
 }
-
+html{
+  scroll-behavior: smooth;
+}
 
 /* Immagini fluide di default */
 img {
@@ -40,7 +40,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: hsl(220, 40%, 20%);
+  background-color: hsl(221, 82%, 15%);
   
   background-size: cover;
   background-position: center;
@@ -62,7 +62,7 @@ img {
 .tagline {
   color: rgb(220, 220, 220);
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   margin: 0; 
 }
 
@@ -81,6 +81,9 @@ img {
   list-style: none;
   padding: 0;
   display: flex;
+  gap: 15px;
+  
+ 
  
   
  
@@ -88,13 +91,17 @@ img {
 
 #site-header nav li {
   
+  background-color: hsl(45, 90%, 70%);
+  border-radius: 20%;
  
+  font-weight: 300px
+  
 }
 
 #site-header nav a {
-  color: hsl(45, 90%, 70%);
+  color: hsl(40, 10%, 6%);
   font-weight: bold;
-  display: inline-block;
+  gap: inherit;
   padding: 8px 14px;
   margin: 2px;
   border-radius: 4px;
@@ -103,7 +110,7 @@ img {
 }
 
 #site-header nav a:hover {
-  color: #ffffff;
+  color: #b12424;
   background-color: rgba(255, 255, 255, 0.15);
   
 }
@@ -141,6 +148,13 @@ main section {
 }
 
 
+
+.parag-chisono{
+  background-color: #e6ebda;
+  
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 /* Titoli del main con marker */
 h2 {
   font-size: clamp(1.3rem, 4vw, 1.8rem);
@@ -174,14 +188,8 @@ h3 {
 }
 
 #chi-sono {
-  text-align: left;
-}
-
-#chi-sono p:first-of-type {
-  font-size: 1.05rem;
-  font-style: italic;
-  color: hsl(220, 30%, 25%);
-}
+   background-color: #e6ebda;
+  padding: 40px 20px;}
 
 @media (min-width: 768px) {
   .avatar {
@@ -190,6 +198,7 @@ h3 {
   }
   #chi-sono {
     text-align: justify;
+   
   }
   #chi-sono p:first-of-type {
     font-size: 1.15rem;
@@ -197,7 +206,6 @@ h3 {
   #chi-sono p:first-of-type::first-letter {
     font-size: 3rem;
     font-weight: bold;
-    float: left;
     margin-right: 6px;
     color: hsl(220, 60%, 30%);
   }
@@ -212,15 +220,18 @@ h3 {
 /* Contenitore per allineare le pillole orizzontalmente */
 .pill-container {
   display: flex;
+  justify-self: center;
+  
   flex-wrap: wrap; /* Permette alle pillole di andare a capo se lo spazio finisce */
   gap: 10px;       /* Distanza tra una pillola e l'altra */
+ 
 }
 
 /* Stile base per tutte le pillole */
 .pill {
-  display: inline-flex;
+
   align-items: center;
-  justify-content: center;
+   background-color: #e6ebda;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   
@@ -421,29 +432,45 @@ button:hover {
   background-color: hsl(220, 60%, 45%);
 }
 
-
-/* Back-to-top: bottone fisso in basso a destra */
+/* Posizionamento fisso sullo schermo- freccia per tornare su  */
 .back-to-top {
+  
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: hsl(220, 60%, 30%);
-  color: #ffffff;
-  text-align: center;
-  line-height: 48px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  z-index: 50;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 99; /* Lo tiene sopra agli altri elementi */
+  
+
+  /* Stile del pulsante (Cerchio) */
+  width: 30px;
+  height: 30px;
+  background-color: #0e1215; /* Colore di sfondo (cambialo come preferisci) */
+  color: #ffffff; /* Colore della freccia */
+  border: none;
+  border-radius: 10%; /* Lo rende perfettamente rotondo */
+  
+  /* Centratura perfetta della freccia ↑ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  
+  /* Comportamento del cursore ed effetti visivi */
+  cursor: pointer;
+  text-decoration: none; /* Rimuove la sottolineatura se usi il tag <a> */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leggera ombra per dare profondità */
+  transition: all 0.3s ease; /* Transizione fluida per l'effetto hover */
 }
 
-.back-to-top:hover {
-  background-color: hsl(220, 60%, 45%);
+/* Effetto quando ci passi sopra con il mouse o lo selezioni con la tastiera */
+.back-to-top:hover,
+.back-to-top:focus {
+  background-color: #0056b3; /* Colore più scuro al passaggio */
+  transform: translateY(-4px); /* Si solleva leggermente */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
+/* Opzionale: Se vuoi che l'intera pagina scorra in modo fluido quando ci clicchi */
 
 
 /* Overlay scuro: copre tutta la finestra */
