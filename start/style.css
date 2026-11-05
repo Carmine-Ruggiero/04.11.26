@@ -1,4 +1,4 @@
-/* Portfolio Page — Settimana V, Giorno II
+head/* Portfolio Page — Settimana V, Giorno II
    Refactoring con CSS positioning: header sticky, badge absolute,
    back-to-top fixed, modal contatti con overlay. */
 
@@ -29,6 +29,9 @@ img {
   height: auto;
 }
 
+.head{
+  height: 70vh;
+}
 
 /* Header */
 #site-header {
@@ -37,27 +40,39 @@ img {
   justify-content: center;
   align-items: center;
   
+  /* Altezza ridotta per renderla più bassa e compatta */
+  height: 20vh; 
+  min-height: 100px; /* Altezza minima di sicurezza per non schiacciare il testo */
+  
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: hsl(221, 82%, 15%);
   
+  background: linear-gradient(135deg, hsl(221, 82%, 15%), hsl(221, 82%, 10%));
   background-size: cover;
   background-position: center;
+  
   color: #ffffff;
   text-align: center;
-  line-height: 1.8;
-  padding: 30px 16px 20px;
-  border-bottom: 4px solid hsl(45, 90%, 60%);
+  padding: 0 20px;
+  
+  /* Bordo inferiore reso più sottile e discreto */
+  border-bottom: 3px solid hsl(45, 90%, 60%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 #site-header h1 {
-  font-size: clamp(1.8rem, 6vw, 3rem);
+  /* Font size ridotto per farlo adattare  alla nuova altezza */
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
   font-weight: bold;
   font-style: italic;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin: 0;
+  
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
+
 
 .tagline {
   color: rgb(220, 220, 220);
@@ -72,6 +87,43 @@ img {
     padding: 60px 20px 40px;
     line-height: 2.4;
      gap: 12px; 
+  }
+}
+
+/*   SPINNER   */
+
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #cccccc;       /* Colore di base del cerchio (grigio chiaro) */
+  border-top: 5px solid #3498db;   /* Colore della parte in movimento (blu) */
+  border-radius: 50%;              /* Rende l'elemento un cerchio perfetto */
+  animation: spin 1s linear infinite; /* Applica l'animazione */
+
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    
+  }
+     25% {
+    transform: rotate(0deg);
+   border-right: rgb(225, 101, 24);
+  }
+    50% {
+    transform: rotate(0deg);
+   border-bottom: rgb(86, 183, 17);
+  }
+     75% {
+    transform: rotate(0deg);
+    border-left: rgb(240, 45, 15)
+    ;
+  }
+  100% {
+    transform: rotate(360deg);
+  border-top: #000;
   }
 }
 
@@ -315,6 +367,19 @@ h3 {
 }
 
 /* Badge NEW: absolute nell'angolo in alto a destra della prima card */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 2. Il blocco del tuo elemento con le nuove righe dentro */
 .project:first-of-type::after {
   content: "NEW";
   position: absolute;
@@ -326,8 +391,12 @@ h3 {
   border-radius: 0 4px 0 4px;
   font-size: 0.75rem;
   font-weight: bold;
+  
+  /* Parte che mancava per il pulse  */
+  display: inline-block;
+  animation: pulse 2s infinite ease-in-out;
+  transform-origin: top right;
 }
-
 
 /* Form contatti — mobile-first */
 label {
